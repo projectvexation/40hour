@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The 40-Hour Vexation</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+      color: #f8f9fa;
+      overflow-x: hidden;
+    }
+
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Hero section with enhanced design */
+    .hero {
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), 
+                  url('https://media.newyorker.com/photos/5909521e019dfc3494e9dd4d/master/w_2240,c_limit/vexations-580.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(253, 216, 53, 0.1) 0%, transparent 70%);
+      animation: pulse 8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.6; }
+    }
+
+    .hero-content {
+      max-width: 800px;
+      padding: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+      background: linear-gradient(135deg, #fff 0%, #fdd835 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      /* Removed: -webkit-text-fill-color: transparent; */
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      animation: fadeInUp 1s ease-out 0.3s both;
+    }
+
+    .hero-description {
+      font-size: 1.1rem;
+      margin-bottom: 3rem;
+      opacity: 0.8;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      animation: fadeInUp 1s ease-out 0.6s both;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Enhanced button styles */
+    .btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #fdd835 0%, #f9c23c 100%);
+      color: #111;
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+      box-shadow: 0 8px 25px rgba(253, 216, 53, 0.3);
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 1s ease-out 0.9s both;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: left 0.6s;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(253, 216, 53, 0.5);
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(26, 26, 26, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 1rem 0;
+      transition: all 0.3s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(26, 26, 26, 0.98);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fdd835;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: #f8f9fa;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #fdd835;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Section styling */
+    section {
+      padding: 6rem 0;
+      position: relative;
+    }
+
+    section:not(:last-child) {
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 700;
+      color: #fdd835;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.2rem;
+      color: rgba(248, 249, 250, 0.8);
+      max-width: 600px;
+      margin: 0 auto;
+      font-weight: 300;
+    }
+
+    /* About section */
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-bottom: 4rem;
+    }
+
+    .about-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: rgba(248, 249, 250, 0.9);
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+      border: 1px solid rgba(253, 216, 53, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #fdd835;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 1rem;
+      color: rgba(248, 249, 250, 0.8);
+      margin-top: 0.5rem;
+    }
+
+    .performers-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr); /* Ensures 2 rows of 5 */
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 1024px) {
+      .performers-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .performers-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .performer-card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1rem;
+      border-radius: 15px;
+      border: 1px solid rgba(253, 216, 53, 0.2);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+
+      /* New lines to center content */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100px;
+      text-align: center;
+    }
+
+    .performer-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #fdd835, #f9c23c);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .performer-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .performer-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(253, 216, 53, 0.2);
+    }
+
+    .performer-name {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #f8f9fa;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    .performer-role {
+      color: #fdd835;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* Support section */
+    .support-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .support-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: rgba(248, 249, 250, 0.9);
+    }
+
+    .support-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .support-list li {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      border-left: 4px solid #fdd835;
+      transition: all 0.3s ease;
+    }
+
+    .support-list li:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateX(5px);
+    }
+
+    .support-icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 1rem;
+      color: #fdd835;
+      font-size: 1.2rem;
+    }
+
+    /* Contact section */
+    .contact-content {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .contact-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #fdd835, #f9c23c);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      color: #111;
+    }
+
+    .contact-label {
+      font-size: 0.9rem;
+      color: rgba(248, 249, 250, 0.8);
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-value {
+      font-weight: 600;
+      color: #f8f9fa;
+    }
+
+    .contact-value a {
+      color: #fdd835;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-value a:hover {
+      color: #f9c23c;
+    }
+
+    /* Footer */
+    footer {
+      background: #0f0f0f;
+      padding: 3rem 0;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-content {
+      color: rgba(248, 249, 250, 0.6);
+      font-size: 0.9rem;
+    }
+
+    .footer-heart {
+      color: #fdd835;
+      font-size: 1.2rem;
+      margin: 0 0.5rem;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .about-content,
+      .support-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .contact-info {
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .performers-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: rgba(253, 216, 53, 0.3);
+      z-index: 1001;
+    }
+
+    .scroll-progress {
+      height: 100%;
+      background: linear-gradient(90deg, #fdd835, #f9c23c);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    /* Fade-in animation for progress bar container */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .fade-in {
+      animation: fadeIn 1.2s ease forwards;
+    }
+  </style>
+</head>
+<body>
+  <!-- Scroll indicator -->
+  <div class="scroll-indicator">
+    <div class="scroll-progress" id="scrollProgress"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">Vexations</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#performers">Performers</a></li>
+        <li><a href="#support">Support</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>The 40-Hour Vexation</h1>
+      <p class="hero-subtitle" style="animation: fadeInUp 1s ease-out 0.15s both;">
+        An Experimental Piano Concert of Endurance and Inspiration
+      </p>
+
+      <p class="hero-description">
+        Ten pianists. Forty hours. One extraordinary musical journey through Erik Satie's hypnotic masterpiece.
+      </p>
+      <a class="btn" href="https://buymeacoffee.com/francescopio" target="_blank">
+        ☕ Support the Project
+      </a>
+<!-- Minimal progress bar below button with synchronized fade-in and width animation -->
+<div id="progress-container" style="max-width: 300px; margin: 1.5rem auto 0 auto; opacity: 0;">
+  <div style="background: rgba(255,255,255,0.1); border-radius: 8px; height: 8px; overflow: hidden;">
+    <div id="progress-bar" style="background: #fdd835; height: 100%; width: 0%;"></div>
+  </div>
+  <p id="progress-text" style="font-size: 0.75rem; color: #fdd835; text-align: center; margin: 0.3rem 0 0 0; font-weight: 600; opacity: 0;">
+    £0 raised of £7,000 goal
+  </p>
+</div>
+
+<script>
+  // === CONFIG ===
+  const raised = 0;   // Change this number to update amount raised
+  const goal = 7000;
+
+  // === ELEMENTS ===
+  const container = document.getElementById('progress-container');
+  const bar = document.getElementById('progress-bar');
+  const text = document.getElementById('progress-text');
+
+  // === CALCULATIONS ===
+  const percent = Math.min((raised / goal) * 100, 100);
+
+  // === ANIMATIONS ===
+  // Fade in container
+  container.style.transition = 'opacity 1.2s ease';
+  text.style.transition = 'opacity 1.2s ease';
+
+  setTimeout(() => {
+    container.style.opacity = '1';
+    text.style.opacity = '1';
+  }, 100);
+
+  // Animate progress bar after fade-in is complete
+  setTimeout(() => {
+    bar.style.transition = 'width 1.2s ease';
+    bar.style.width = percent + '%';
+    text.textContent = `£${raised.toLocaleString()} raised of £${goal.toLocaleString()} goal`;
+  }, 1400);
+</script>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">What Is This?</h2>
+        <p class="section-subtitle">A groundbreaking interpretation of Erik Satie's legendary composition</p>
+      </div>
+      
+      <div class="about-content">
+        <div class="about-text">
+          <p>
+            Erik Satie's "Vexations" (1893) is one of the most provocative pieces in classical music history. 
+            This brief, melancholic motif is meant to be repeated 840 times, creating a hypnotic performance 
+            that challenges our concepts of time, endurance, and musical experience.
+          </p>
+          <p>
+            Our ambitious project brings together ten accomplished pianists for a continuous 40-hour performance. 
+            This isn't just a concert—it's an exploration of 
+            human endurance, musical meditation, and the transformative power of repetition.
+          </p>
+        </div>
+        
+        <div class="about-stats">
+          <div class="stat-card">
+            <span class="stat-number">40</span>
+            <span class="stat-label">Hours of Music</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">840</span>
+            <span class="stat-label">Repetitions</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">10</span>
+            <span class="stat-label">Pianists</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">1</span>
+            <span class="stat-label">Masterpiece</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Performers Section -->
+  <section id="performers">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">The Performers</h2>
+        <p class="section-subtitle">Ten dedicated pianists committed to this extraordinary musical journey</p>
+      </div>
+      
+      <div class="performers-grid">
+        <div class="performer-card">
+          <div class="performer-name">Francesco Pio Gennarelli</div>
+        </div>
+        <div class="performer-card">
+          <div class="performer-name">Matthew Lee Knowles</div>
+        </div>
+        <div class="performer-card">
+          <div class="performer-name">Jelena Makarova</div>
+        </div>
+        <div class="performer-card">
+          <div class="performer-name">Maya-Leigh Rosenwasser</div>
+        </div>
+        <div class="performer-card">
+          <div class="performer-name">Neil Georgeson</div>
+        </div>
+        <div class="performer-card">
+          <div class="performer-name">Aidan Chan</div>
+        </div>
+        <div class="performer-card">
+          <div class="performer-name">Edward Tait</div>
+        </div>
+        <div class="performer-card">
+          <div class="performer-name">Paul David Kean</div>
+        </div>
+        <div class="performer-card">
+          <div class="performer-name">Ben Smith</div>
+        </div>
+        <div class="performer-card">
+          <div class="performer-name">Thomas Ang</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Support Section -->
+  <section id="support">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Why We Need Your Help</h2>
+        <p class="section-subtitle">Your support makes this extraordinary musical experience possible</p>
+      </div>
+      
+      <div class="support-content">
+        <div class="support-text">
+          <p>
+            Creating a 40-hour continuous performance requires significant resources and planning. 
+            Your donations directly support the artistic vision and ensure this groundbreaking event 
+            can reach audiences worldwide.
+          </p>
+          <p>
+            Every contribution, no matter the size, helps us maintain the highest standards of 
+            artistic excellence while making this unique experience accessible to all.
+          </p>
+        </div>
+        
+        <div>
+          <ul class="support-list">
+            <li>
+              <span class="support-icon">🏛</span>
+              <span>Renting the venue and piano hire at St James's Church, Piccadilly</span>
+            </li>
+            <li>
+              <span class="support-icon">🛡</span>
+              <span>24-hour security and event management</span>
+            </li>
+            <li>
+              <span class="support-icon">📹</span>
+              <span>Professional livestreaming and recording equipment</span>
+            </li>
+            <li>
+              <span class="support-icon">🎵</span>
+              <span>Public accessibility and community outreach</span>
+            </li>
+            <li>
+              <span class="support-icon">☕</span>
+              <span>Performer support and refreshments</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div style="text-align: center; margin-top: 3rem;">
+        <a class="btn" href="https://buymeacoffee.com/francescopio" target="_blank">
+          🎶 Support the Performance
+        </a>
+      </div>
+    </div>
+  </section>
+
+<!-- Contact Section -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Stay Connected</h2>
+      <p class="section-subtitle">Follow our journey and be part of this historic musical event</p>
+    </div>
+    <div class="contact-content">
+      <p>
+        Join our community of music lovers and supporters. Stay updated on rehearsals, 
+        behind-the-scenes content, and the countdown to our 40-hour performance.
+      </p>
+      
+      <!-- Donation Disclaimer -->
+      <p style="margin-top: 1.5em; font-style: italic; color: #BBBBBB;">
+        Donations help us make this concert possible. However, if we do not reach our funding goal, the concert and project may not proceed. Please note that donations are voluntary and non-refundable. The concert will be free and open to everyone, regardless of whether you have donated.
+      </p>
+
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div class="contact-label">Instagram</div>
+          <div class="contact-value">
+            <a href="https://instagram.com/pio_008" target="_blank">@pio_008</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉</div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">
+            <a href="mailto:youremail@example.com">vexationp@gmail.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <p>
+          Made with <span class="footer-heart">❤</span> by Francesco Pio Gennarelli
+          <br>
+          <small>&copy; 2025 The 40-Hour Vexation Project. All rights reserved.</small>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scrolling and navbar effects
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      const scrollProgress = document.getElementById('scrollProgress');
+      
+      // Navbar scroll effect
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+      
+      // Scroll progress indicator
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      scrollProgress.style.width = scrolled + '%';
+    });
+
+    // Smooth scrolling for navigation links, karto sei scarso
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
