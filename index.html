@@ -16,60 +16,33 @@
       box-sizing: border-box;
     }
 
-    /* Modal styles */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(15, 15, 15, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
-}
-
-.modal-content {
-  background: #1a1a1a;
-  padding: 2rem;
-  border-radius: 12px;
-  max-width: 600px;
-  color: #fdd835;
-  position: relative;
-}
-
-.modal-close {
-  position: absolute;
-  top: 12px;
-  right: 20px;
-  font-size: 2rem;
-  color: #fdd835;
-  cursor: pointer;
-  user-select: none;
-}
-
-.modal-close:hover {
-  color: #fff;
-}
-
+    :root {
+      --primary-gold: #fdd835;
+      --secondary-gold: #f9c23c;
+      --dark-bg: #0f0f0f;
+      --card-bg: #1a1a1a;
+      --text-primary: #f8f9fa;
+      --text-secondary: rgba(248, 249, 250, 0.8);
+      --accent-glow: rgba(253, 216, 53, 0.3);
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --glass-border: rgba(253, 216, 53, 0.2);
+    }
 
     body {
       font-family: 'Inter', sans-serif;
       line-height: 1.6;
-      background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
-      color: #f8f9fa;
+      background: var(--dark-bg);
+      color: var(--text-primary);
       overflow-x: hidden;
     }
 
-    /* Smooth scrolling */
     html {
       scroll-behavior: smooth;
     }
 
-    /* Hero section with enhanced design */
+    /* Enhanced Hero Section with Split Layout */
     .hero {
-      background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), 
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(15, 15, 15, 0.7)), 
                   url('https://media.newyorker.com/photos/5909521e019dfc3494e9dd4d/master/w_2240,c_limit/vexations-580.jpg');
       background-size: cover;
       background-position: center;
@@ -78,9 +51,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
       position: relative;
       overflow: hidden;
+      padding: 8rem 2rem 4rem;
     }
 
     .hero::before {
@@ -90,57 +63,97 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: radial-gradient(circle at 50% 50%, rgba(253, 216, 53, 0.1) 0%, transparent 70%);
-      animation: pulse 8s ease-in-out infinite;
+      background: radial-gradient(circle at 50% 50%, var(--accent-glow) 0%, transparent 70%);
+      animation: heroGlow 12s ease-in-out infinite;
     }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 0.6; }
+    @keyframes heroGlow {
+      0%, 100% { 
+        opacity: 0.2;
+        transform: scale(1);
+      }
+      50% { 
+        opacity: 0.8;
+        transform: scale(1.1);
+      }
     }
 
     .hero-content {
-      max-width: 800px;
-      padding: 2rem;
+      max-width: 1200px;
+      width: 100%;
       position: relative;
       z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-left {
+      text-align: left;
+    }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
     }
 
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 8vw, 6rem);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
       font-weight: 700;
-      margin-bottom: 1rem;
-      text-shadow: 0 4px 20px rgba(0,0,0,0.8);
-      background: linear-gradient(135deg, #fff 0%, #fdd835 100%);
+      background: linear-gradient(135deg, #fff 0%, var(--primary-gold) 50%, #fff 100%);
+      background-size: 200% 200%;
       background-clip: text;
       -webkit-background-clip: text;
-      /* Removed: -webkit-text-fill-color: transparent; */
-      animation: fadeInUp 1s ease-out;
+      -webkit-text-fill-color: transparent;
+      animation: fadeInUp 1s ease-out, shimmer 4s ease-in-out infinite;
+      text-shadow: 0 0 30px var(--accent-glow);
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .hero-subtitle {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 300;
-      margin-bottom: 2rem;
-      opacity: 0.9;
+      opacity: 0;
       animation: fadeInUp 1s ease-out 0.3s both;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      margin-bottom: 2rem;
+      color: var(--text-secondary);
     }
 
     .hero-description {
       font-size: 1.1rem;
-      margin-bottom: 3rem;
-      opacity: 0.8;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+      opacity: 0;
       animation: fadeInUp 1s ease-out 0.6s both;
+      font-weight: 400;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+      color: var(--text-secondary);
+    }
+
+    /* Button Container */
+    .hero-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      opacity: 0;
+      animation: fadeInUp 1s ease-out 0.9s both;
     }
 
     @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(40px);
       }
       to {
         opacity: 1;
@@ -148,21 +161,30 @@
       }
     }
 
-    /* Enhanced button styles */
+    /* Enhanced Button Styles */
     .btn {
       display: inline-block;
-      background: linear-gradient(135deg, #fdd835 0%, #f9c23c 100%);
-      color: #111;
-      padding: 1rem 2.5rem;
+      background: linear-gradient(135deg, var(--primary-gold) 0%, var(--secondary-gold) 100%);
+      color: var(--dark-bg);
+      padding: 0.9rem 2.2rem;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
       border-radius: 50px;
-      transition: all 0.3s ease;
-      font-size: 1.1rem;
-      box-shadow: 0 8px 25px rgba(253, 216, 53, 0.3);
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      font-size: 1rem;
+      box-shadow: 0 8px 25px var(--accent-glow), 0 0 0 0 var(--primary-gold);
       position: relative;
       overflow: hidden;
-      animation: fadeInUp 1s ease-out 0.9s both;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--primary-gold);
+      border: 2px solid var(--primary-gold);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 25px rgba(253, 216, 53, 0.2);
     }
 
     .btn::before {
@@ -172,8 +194,8 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-      transition: left 0.6s;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+      transition: left 0.8s;
     }
 
     .btn:hover::before {
@@ -181,26 +203,181 @@
     }
 
     .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 35px rgba(253, 216, 53, 0.5);
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 40px var(--accent-glow), 0 0 20px var(--primary-gold);
     }
 
-    /* Navigation */
+    .btn-secondary:hover {
+      background: rgba(253, 216, 53, 0.1);
+      color: var(--text-primary);
+      box-shadow: 0 15px 40px rgba(253, 216, 53, 0.3);
+    }
+
+    /* Event Info Card */
+    .hero-info {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 20px;
+      border: 1px solid rgba(253, 216, 53, 0.3);
+      backdrop-filter: blur(15px);
+      opacity: 0;
+      animation: fadeInUp 1s ease-out 1.2s both;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-info::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-gold), var(--secondary-gold));
+      border-radius: 20px 20px 0 0;
+    }
+
+    .hero-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--primary-gold);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .hero-info p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      color: var(--text-secondary);
+    }
+
+    .hero-info p:last-of-type {
+      margin-bottom: 2rem;
+    }
+
+    .venue-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--primary-gold);
+      padding: 0.8rem 1.8rem;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 30px;
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .venue-link:hover {
+      background: rgba(253, 216, 53, 0.15);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(253, 216, 53, 0.3);
+      border-color: var(--primary-gold);
+    }
+
+    /* Progress Section */
+    .progress-section {
+      margin-top: 2rem;
+    }
+
+    .progress-section h4 {
+      font-size: 1.1rem;
+      color: var(--primary-gold);
+      margin-bottom: 1rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    /* Progress Bar Container */
+    .progress-container {
+      width: 100%;
+      opacity: 0;
+      transition: opacity 1.5s ease;
+    }
+
+    .progress-stats {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+      font-size: 0.9rem;
+    }
+
+    .progress-raised {
+      color: var(--primary-gold);
+      font-weight: 700;
+    }
+
+    .progress-goal {
+      color: var(--text-secondary);
+    }
+
+    .progress-bar-bg {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      height: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-bar-fill {
+      background: linear-gradient(90deg, var(--primary-gold), var(--secondary-gold));
+      height: 100%;
+      width: 0%;
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      animation: shimmerProgress 2s infinite;
+    }
+
+    @keyframes shimmerProgress {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .progress-text {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      text-align: center;
+      margin-top: 0.5rem;
+      opacity: 0;
+      transition: opacity 1.5s ease;
+    }
+
+    /* Glass Navigation */
     nav {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      background: rgba(26, 26, 26, 0.95);
-      backdrop-filter: blur(10px);
+      background: rgba(15, 15, 15, 0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
       z-index: 1000;
       padding: 1rem 0;
       transition: all 0.3s ease;
     }
 
     nav.scrolled {
-      background: rgba(26, 26, 26, 0.98);
-      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+      background: rgba(15, 15, 15, 0.95);
+      box-shadow: 0 2px 30px rgba(0,0,0,0.5);
     }
 
     .nav-container {
@@ -214,27 +391,52 @@
 
     .logo {
       font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
+      font-size: 1.75rem;
       font-weight: 700;
-      color: #fdd835;
+      color: var(--primary-gold);
       text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.1);
+      text-shadow: 0 0 20px var(--accent-glow);
     }
 
     .nav-links {
       display: flex;
       list-style: none;
-      gap: 2rem;
+      gap: 2.5rem;
     }
 
     .nav-links a {
-      color: #f8f9fa;
+      color: var(--text-primary);
       text-decoration: none;
       font-weight: 500;
-      transition: color 0.3s ease;
+      transition: all 0.3s ease;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--primary-gold);
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+      left: 0;
     }
 
     .nav-links a:hover {
-      color: #fdd835;
+      color: var(--primary-gold);
+      transform: translateY(-2px);
     }
 
     /* Container */
@@ -244,14 +446,20 @@
       padding: 0 2rem;
     }
 
-    /* Section styling */
+    /* Modern Section Styling */
     section {
-      padding: 6rem 0;
+      padding: 5rem 0;
       position: relative;
     }
 
-    section:not(:last-child) {
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
     }
 
     .section-header {
@@ -261,21 +469,36 @@
 
     .section-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
       font-weight: 700;
-      color: #fdd835;
+      color: var(--primary-gold);
       margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary-gold), var(--secondary-gold));
+      border-radius: 2px;
     }
 
     .section-subtitle {
-      font-size: 1.2rem;
-      color: rgba(248, 249, 250, 0.8);
+      font-size: 1.1rem;
+      color: var(--text-secondary);
       max-width: 600px;
       margin: 0 auto;
       font-weight: 300;
+      line-height: 1.6;
     }
 
-    /* About section */
+    /* Enhanced About Section */
     .about-content {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -285,77 +508,117 @@
     }
 
     .about-text {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: rgba(248, 249, 250, 0.9);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+
+    .about-text p {
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      animation: fadeInLeft 0.8s ease-out both;
+    }
+
+    .about-text p:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
 
     .about-stats {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
+      gap: 1.5rem;
     }
 
     .stat-card {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 2rem;
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      padding: 2rem 1.5rem;
       border-radius: 15px;
       text-align: center;
-      border: 1px solid rgba(253, 216, 53, 0.2);
-      transition: transform 0.3s ease;
+      border: 1px solid var(--glass-border);
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .stat-card:hover::before {
+      opacity: 1;
     }
 
     .stat-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-10px) scale(1.05);
+      border-color: var(--primary-gold);
+      box-shadow: 0 20px 60px var(--accent-glow);
     }
 
     .stat-number {
       font-size: 3rem;
-      font-weight: 700;
-      color: #fdd835;
+      font-weight: 800;
+      color: var(--primary-gold);
       display: block;
+      margin-bottom: 0.3rem;
+      position: relative;
+      z-index: 1;
     }
 
     .stat-label {
-      font-size: 1rem;
-      color: rgba(248, 249, 250, 0.8);
-      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+      position: relative;
+      z-index: 1;
     }
 
+    /* Enhanced Performers Section */
     .performers-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr); /* Ensures 2 rows of 5 */
-      gap: 2rem;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 1.5rem;
       margin-top: 3rem;
-    }
-
-    @media (max-width: 1024px) {
-      .performers-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 600px) {
-      .performers-grid {
-        grid-template-columns: 1fr;
-      }
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .performer-card {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 1rem;
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      padding: 1.5rem;
       border-radius: 15px;
-      border: 1px solid rgba(253, 216, 53, 0.2);
-      transition: all 0.3s ease;
+      border: 1px solid var(--glass-border);
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       position: relative;
       overflow: hidden;
-
-      /* New lines to center content */
+      cursor: pointer;
+      text-align: center;
+      min-height: 110px;
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 100px;
-      text-align: center;
     }
 
     .performer-card::before {
@@ -364,36 +627,52 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #fdd835, #f9c23c);
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-gold), var(--secondary-gold));
       transform: scaleX(0);
-      transition: transform 0.3s ease;
+      transition: transform 0.4s ease;
+    }
+
+    .performer-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at center, var(--accent-glow) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
     }
 
     .performer-card:hover::before {
       transform: scaleX(1);
     }
 
+    .performer-card:hover::after {
+      opacity: 0.3;
+    }
+
     .performer-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(253, 216, 53, 0.2);
+      transform: translateY(-8px);
+      border-color: var(--primary-gold);
+      box-shadow: 0 25px 60px var(--accent-glow);
     }
 
     .performer-name {
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       font-weight: 600;
-      color: #f8f9fa;
-      margin-bottom: 0.5rem;
-      text-align: center;
+      color: var(--text-primary);
+      position: relative;
+      z-index: 1;
+      transition: color 0.3s ease;
     }
 
-    .performer-role {
-      color: #fdd835;
-      font-size: 0.9rem;
-      font-weight: 500;
+    .performer-card:hover .performer-name {
+      color: var(--primary-gold);
     }
 
-    /* Support section */
+    /* Enhanced Support Section */
     .support-content {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -402,9 +681,13 @@
     }
 
     .support-text {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: rgba(248, 249, 250, 0.9);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+
+    .support-text p {
+      margin-bottom: 1.2rem;
     }
 
     .support-list {
@@ -415,32 +698,67 @@
     .support-list li {
       display: flex;
       align-items: center;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 10px;
-      border-left: 4px solid #fdd835;
-      transition: all 0.3s ease;
+      padding: 1.2rem;
+      margin-bottom: 1.2rem;
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      border: 1px solid var(--glass-border);
+      border-left: 3px solid var(--primary-gold);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .support-list li::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, var(--accent-glow), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .support-list li:hover::before {
+      opacity: 0.3;
     }
 
     .support-list li:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: translateX(5px);
+      transform: translateX(10px);
+      border-color: var(--primary-gold);
+      box-shadow: 0 10px 30px var(--accent-glow);
     }
 
     .support-icon {
-      width: 24px;
-      height: 24px;
-      margin-right: 1rem;
-      color: #fdd835;
-      font-size: 1.2rem;
+      width: 26px;
+      height: 26px;
+      margin-right: 1.2rem;
+      font-size: 1.3rem;
+      position: relative;
+      z-index: 1;
     }
 
-    /* Contact section */
+    .support-list li span:last-child {
+      position: relative;
+      z-index: 1;
+      font-weight: 500;
+    }
+
+    /* Enhanced Contact Section */
     .contact-content {
       text-align: center;
-      max-width: 600px;
+      max-width: 800px;
       margin: 0 auto;
+    }
+
+    .contact-content p {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
     }
 
     .contact-info {
@@ -454,71 +772,243 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      transition: transform 0.3s ease;
+    }
+
+    .contact-item:hover {
+      transform: translateY(-5px);
     }
 
     .contact-icon {
-      width: 48px;
-      height: 48px;
-      background: linear-gradient(135deg, #fdd835, #f9c23c);
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
       font-size: 1.5rem;
-      color: #111;
+      color: var(--dark-bg);
+      box-shadow: 0 6px 20px var(--accent-glow);
+      transition: all 0.3s ease;
+    }
+
+    .contact-item:hover .contact-icon {
+      transform: scale(1.1);
+      box-shadow: 0 12px 35px var(--accent-glow);
     }
 
     .contact-label {
       font-size: 0.9rem;
-      color: rgba(248, 249, 250, 0.8);
-      margin-bottom: 0.5rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.6rem;
+      font-weight: 500;
     }
 
     .contact-value {
       font-weight: 600;
-      color: #f8f9fa;
+      color: var(--text-primary);
+      font-size: 1rem;
     }
 
     .contact-value a {
-      color: #fdd835;
+      color: var(--primary-gold);
       text-decoration: none;
-      transition: color 0.3s ease;
+      transition: all 0.3s ease;
     }
 
     .contact-value a:hover {
-      color: #f9c23c;
+      color: var(--secondary-gold);
+      text-shadow: 0 0 10px var(--accent-glow);
     }
 
-    /* Footer */
+    /* Enhanced Footer */
     footer {
-      background: #0f0f0f;
-      padding: 3rem 0;
+      background: var(--dark-bg);
+      padding: 4rem 0;
       text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.1);
+      border-top: 1px solid var(--glass-border);
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
     }
 
     .footer-content {
-      color: rgba(248, 249, 250, 0.6);
-      font-size: 0.9rem;
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.8;
     }
 
     .footer-heart {
-      color: #fdd835;
-      font-size: 1.2rem;
+      color: var(--primary-gold);
+      font-size: 1.3rem;
       margin: 0 0.5rem;
+      display: inline-block;
+      animation: heartbeat 2s ease-in-out infinite;
     }
 
-    /* Responsive design */
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    /* Enhanced Modal */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 15, 15, 0.95);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .modal.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      padding: 3rem;
+      border-radius: 20px;
+      max-width: 600px;
+      color: var(--text-primary);
+      position: relative;
+      border: 1px solid var(--glass-border);
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+    }
+
+    .modal.show .modal-content {
+      transform: scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      font-size: 2rem;
+      color: var(--primary-gold);
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.3s ease;
+    }
+
+    .modal-close:hover {
+      color: var(--text-primary);
+      transform: rotate(90deg);
+    }
+
+    /* Enhanced Scroll Progress */
+    .scroll-indicator {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--glass-bg);
+      z-index: 1001;
+    }
+
+    .scroll-progress {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary-gold), var(--secondary-gold));
+      width: 0%;
+      transition: width 0.1s ease;
+      position: relative;
+    }
+
+    .scroll-progress::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 20px;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6));
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* Responsive Design Updates */
+    @media (max-width: 1024px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+      }
+
+      .hero-left {
+        text-align: center;
+      }
+
+      .hero-buttons {
+        align-items: center;
       }
 
       .about-content,
       .support-content {
         grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      
+      .performers-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 6rem 1rem 3rem;
+      }
+
+      .hero-content {
         gap: 2rem;
+      }
+
+      .hero h1 {
+        font-size: clamp(2rem, 10vw, 3.5rem);
+        margin-bottom: 1rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-description {
+        margin-bottom: 2rem;
+      }
+
+      .hero-buttons {
+        width: 100%;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 320px;
+      }
+
+      .nav-links {
+        display: none;
       }
 
       .contact-info {
@@ -526,41 +1016,42 @@
         gap: 2rem;
       }
 
-      .performers-grid {
-        grid-template-columns: 1fr;
-      }
-
       .about-stats {
         grid-template-columns: 1fr;
       }
+
+      .performers-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+      }
+
+      section {
+        padding: 3rem 0;
+      }
     }
 
-    /* Scroll indicator */
-    .scroll-indicator {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: rgba(253, 216, 53, 0.3);
-      z-index: 1001;
-    }
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 1rem;
+      }
+      
+      .performer-card {
+        min-height: 90px;
+        padding: 1.2rem;
+      }
 
-    .scroll-progress {
-      height: 100%;
-      background: linear-gradient(90deg, #fdd835, #f9c23c);
-      width: 0%;
-      transition: width 0.3s ease;
-    }
+      .performers-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
 
-    /* Fade-in animation for progress bar container */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+      .hero-info {
+        padding: 1.5rem;
+      }
 
-    .fade-in {
-      animation: fadeIn 1.2s ease forwards;
+      .hero-info h3 {
+        font-size: 1.4rem;
+      }
     }
   </style>
 </head>
@@ -583,71 +1074,60 @@
 
   <section class="hero">
     <div class="hero-content">
-      <h1>The 40-Hour Vexations</h1>
-      <p class="hero-subtitle" style="animation: fadeInUp 1s ease-out 0.15s both;">
-        An Experimental Piano Concert of Endurance and Inspiration
-      </p>
+      <div class="hero-left">
+        <h1>The 40-Hour Vexations</h1>
+        
+        <p class="hero-subtitle">
+          An Experimental Piano Concert of Endurance and Inspiration
+        </p>
+        
+        <p class="hero-description">
+          Ten pianists. Forty hours. One extraordinary musical journey through Erik Satie's hypnotic masterpiece.
+        </p>
 
-      <p class="hero-description">
-        Ten pianists. Forty hours. One extraordinary musical journey through Erik Satie's hypnotic masterpiece.
-      </p>
-      <a class="btn" href="https://www.gofundme.com/f/support-the-40-hour-vexations-performance" target="_blank">
-        ☕ Support the Project
-      </a>
+        <div class="hero-buttons">
+          <a class="btn" href="https://www.gofundme.com/f/support-the-40-hour-vexations-performance" target="_blank">
+            ☕ Support the Project
+          </a>
+          
+          <a class="btn btn-secondary" href="https://www.youtube.com/@francescopio5864" target="_blank">
+            🔴 Watch Live Stream
+          </a>
+        </div>
+      </div>
       
-      <p style="
-        font-size: 1rem; 
-        margin-top: 2rem; 
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-        opacity: 0.8;
-        animation: fadeInUp 1s ease-out 1.2s both;
-      ">
-        We are holding a 40 hour piano-a-thon from 17th to 19th of ocstober which will take place at St Pancras Clock Tower.  The funds raised from this event will firstly be used towards paying for the venue, with any profit then going to the charity Help Musicians”
-      </p>
+      <div class="hero-right">
+        <div class="hero-info">
+          <h3>Event Details</h3>
+          <p>
+            Join us for a 40-hour piano marathon from <strong style='color: var(--primary-gold);'>October 17 at 10 am - 19th to 2 am</strong> at the historic St Pancras Clock Tower.
+          </p>
+          <p>
+            Funds raised will cover venue costs, with profits supporting <strong style='color: var(--primary-gold);'>Help Musicians charity.</strong>
+          </p>
+          
+          <div style="text-align: center;">
+            <a href="https://www.stpancrasclocktower.london/location" target="_blank" class="venue-link">
+              📍 Explore the Venue
+            </a>
+          </div>
+        </div>
 
-<div id="progress-container" style="max-width: 300px; margin: 1.5rem auto 0 auto; opacity: 0;">
-  <div style="background: rgba(255,255,255,0.1); border-radius: 8px; height: 8px; overflow: hidden;">
-    <div id="progress-bar" style="background: #fdd835; height: 100%; width: 0%;"></div>
-  </div>
-  <p id="progress-text" style="font-size: 0.75rem; color: #fdd835; text-align: center; margin: 0.3rem 0 0 0; font-weight: 600; opacity: 0;">
-    £5 raised of £150 goal 
-  </p>
-</div>
-
-<script>
-  // === CONFIG ===
-  const raised = 5;   // Change this number to update amount raised
-  const goal = 150;
-
-  // === ELEMENTS ===
-  const container = document.getElementById('progress-container');
-  const bar = document.getElementById('progress-bar');
-  const text = document.getElementById('progress-text');
-
-  // === CALCULATIONS ===
-  const percent = Math.min((raised / goal) * 100, 100);
-
-  // === ANIMATIONS ===
-  // Fade in container
-  container.style.transition = 'opacity 1.2s ease';
-  text.style.transition = 'opacity 1.2s ease';
-
-  setTimeout(() => {
-    container.style.opacity = '1';
-    text.style.opacity = '1';
-  }, 100);
-
-  // Animate progress bar after fade-in is complete
-  setTimeout(() => {
-    bar.style.transition = 'width 1.2s ease';
-    bar.style.width = percent + '%';
-    text.textContent = `£${raised.toLocaleString()} raised of £${goal.toLocaleString()} goal`;
-  }, 1400);
-</script>
-
-
+        <div class="progress-section">
+          <h4>Fundraising Progress</h4>
+          <div id="progress-container" class="progress-container">
+            <div class="progress-stats">
+              <span class="progress-raised">£5 raised</span>
+              <span class="progress-goal">Goal: £150</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div id="progress-bar" class="progress-bar-fill"></div>
+            </div>
+            <p id="progress-text" class="progress-text">
+              Help us reach our goal to make this performance possible
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -668,8 +1148,7 @@
           </p>
           <p>
             Our ambitious project brings together ten accomplished pianists for a continuous 40-hour performance. 
-            This isn't just a concert—it's an exploration of 
-            human endurance, musical meditation, and the transformative power of repetition.
+            This isn't just a concert—it's an exploration of human endurance, musical meditation, and the transformative power of repetition.
           </p>
         </div>
         
@@ -702,40 +1181,40 @@
         <p class="section-subtitle">Ten dedicated pianists committed to this extraordinary musical journey</p>
       </div>
       
-<div class="performers-grid">
-      <div class="performer-card" data-bio="is a pianist and composer specialising in contemporary and experimental music with a passion for endurance performances.">
-        <div class="performer-name">Francesco Pio Gennarelli</div>
-      </div>
-      <div class="performer-card" data-bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor">
-        <div class="performer-name">Matthew Lee Knowles</div>
-      </div>
-      <div class="performer-card" data-bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor">
-        <div class="performer-name">Jelena Makarova</div>
-      </div>
-      <div class="performer-card" data-bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor">
-        <div class="performer-name">Maya-Leigh Rosenwasser</div>
-      </div>
-      <div class="performer-card" data-bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor">
-        <div class="performer-name">Neil Georgeson</div>
-      </div>
-      <div class="performer-card" data-bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor">
-        <div class="performer-name">Aidan Chan</div>
-      </div>
-      <div class="performer-card" data-bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.">
-        <div class="performer-name">Edward Tait</div>
-      </div>
-      <div class="performer-card" data-bio="blends traditional techniques with modern performance art in her piano playing.">
-        <div class="performer-name">Xuanxin Chen</div>
-      </div>
-      <div class="performer-card" data-bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor">
-        <div class="performer-name">Ben Smith</div>
-      </div>
-      <div class="performer-card" data-bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.">
-        <div class="performer-name">Thomas Ang</div>
+      <div class="performers-grid">
+        <div class="performer-card" data-bio="is a pianist and composer specialising in contemporary and experimental music with a passion for endurance performances.">
+          <div class="performer-name">Francesco Pio Gennarelli</div>
+        </div>
+        <div class="performer-card" data-bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor">
+          <div class="performer-name">Matthew Lee Knowles</div>
+        </div>
+        <div class="performer-card" data-bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor">
+          <div class="performer-name">Jelena Makarova</div>
+        </div>
+        <div class="performer-card" data-bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor">
+          <div class="performer-name">Maya-Leigh Rosenwasser</div>
+        </div>
+        <div class="performer-card" data-bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor">
+          <div class="performer-name">Neil Georgeson</div>
+        </div>
+        <div class="performer-card" data-bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor">
+          <div class="performer-name">Aidan Chan</div>
+        </div>
+        <div class="performer-card" data-bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.">
+          <div class="performer-name">Edward Tait</div>
+        </div>
+        <div class="performer-card" data-bio="blends traditional techniques with modern performance art in her piano playing.">
+          <div class="performer-name">Xuanxin Chen</div>
+        </div>
+        <div class="performer-card" data-bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor">
+          <div class="performer-name">Ben Smith</div>
+        </div>
+        <div class="performer-card" data-bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.">
+          <div class="performer-name">Thomas Ang</div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <section id="support">
     <div class="container">
@@ -749,11 +1228,10 @@
           <p>
             Creating a 40-hour continuous performance requires significant resources and planning. 
             Your donations directly support the artistic vision and ensure this groundbreaking event 
-            can reach audiences worldwide. There are no official dates yet, but most likely the concert is going to be in mid-October arround the 17th
+            can reach audiences worldwide. The performance will take place at the historic St Pancras Clock Tower, a beautiful duplex apartment within the tower of the iconic former Midland Hotel.
           </p>
           <p>
-            Every contribution, no matter the size, helps us maintain the highest standards of 
-            artistic excellence while making this unique experience accessible to all.
+            The Tower Room features a Weinbach baby grand piano with excellent acoustics, perfect for both live performance and professional livestreaming to share this unique musical journey with audiences around the globe.
           </p>
         </div>
         
@@ -761,7 +1239,7 @@
           <ul class="support-list">
             <li>
               <span class="support-icon">🏛</span>
-              <span>Renting the venue and piano hire </span>
+              <span>Renting the venue and piano hire</span>
             </li>
             <li>
               <span class="support-icon">🛡</span>
@@ -791,37 +1269,36 @@
     </div>
   </section>
 
-<section id="contact">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Stay Connected</h2>
-      <p class="section-subtitle">Follow our journey and be part of this historic musical event</p>
-    </div>
-    <div class="contact-content">
-      <p>
-        Join our community of music lovers and supporters. Stay updated on rehearsals, 
-        behind-the-scenes content, and the countdown to our 40-hour performance.
-      </p>
-      <div class="contact-info">
-        <div class="contact-item">
-          <div class="contact-icon">📱</div>
-          <div class="contact-label">Instagram</div>
-          <div class="contact-value">
-            <a href="https://instagram.com/pio_008" target="_blank">@pio_008</a>
+  <section id="contact">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Stay Connected</h2>
+        <p class="section-subtitle">Follow our journey and be part of this historic musical event</p>
+      </div>
+      <div class="contact-content">
+        <p>
+          Join our community of music lovers and supporters. Stay updated on rehearsals, 
+          behind-the-scenes content, and the countdown to our 40-hour performance.
+        </p>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">📱</div>
+            <div class="contact-label">Instagram</div>
+            <div class="contact-value">
+              <a href="https://instagram.com/pio_008" target="_blank">@pio_008</a>
+            </div>
           </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">✉</div>
-          <div class="contact-label">Email</div>
-          <div class="contact-value">
-            <a href="mailto:youremail@example.com">vexationp@gmail.com</a>
+          <div class="contact-item">
+            <div class="contact-icon">✉</div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value">
+              <a href="mailto:vexationp@gmail.com">vexationp@gmail.com</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
+  </section>
 
   <footer>
     <div class="container">
@@ -829,14 +1306,45 @@
         <p>
           Made with <span class="footer-heart">❤</span> by Francesco Pio Gennarelli
           <br>
-          <small>&copy; 2025 The 40-Hour Vexation Project. All rights reserved.</small>
+          <small>&copy; 2025 The 40-Hour Vexations Project. All rights reserved.</small>
         </p>
       </div>
     </div>
   </footer>
 
+  <!-- Modal for performer bios -->
+  <div id="bioModal" class="modal">
+    <div class="modal-content">
+      <span id="modalClose" class="modal-close">&times;</span>
+      <h3 id="modalPerformerName" style="color: var(--primary-gold); margin-bottom: 1rem; font-family: 'Playfair Display', serif; font-size: 1.8rem;"></h3>
+      <p id="modalPerformerBio" style="line-height: 1.7; font-size: 1.1rem;"></p>
+    </div>
+  </div>
+
   <script>
-    // Smooth scrolling and navbar effects
+    // === PROGRESS BAR CONFIG ===
+    const raised = 5;
+    const goal = 150;
+    const percent = Math.min((raised / goal) * 100, 100);
+
+    // === ELEMENTS ===
+    const container = document.getElementById('progress-container');
+    const bar = document.getElementById('progress-bar');
+    const text = document.getElementById('progress-text');
+
+    // === PROGRESS BAR ANIMATION ===
+    setTimeout(() => {
+      container.style.opacity = '1';
+      text.style.opacity = '1';
+    }, 1500);
+
+    setTimeout(() => {
+      bar.style.transition = 'width 2s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+      bar.style.width = percent + '%';
+      text.textContent = `£${raised.toLocaleString()} raised of £${goal.toLocaleString()} goal`;
+    }, 2000);
+
+    // === SCROLL EFFECTS ===
     window.addEventListener('scroll', function() {
       const navbar = document.getElementById('navbar');
       const scrollProgress = document.getElementById('scrollProgress');
@@ -847,33 +1355,6 @@
       } else {
         navbar.classList.remove('scrolled');
       }
-
-      const modal = document.getElementById('bioModal');
-const modalName = document.getElementById('modalPerformerName');
-const modalBio = document.getElementById('modalPerformerBio');
-const modalClose = document.getElementById('modalClose');
-
-document.querySelectorAll('.performer-card').forEach(card => {
-  card.style.cursor = 'pointer';
-  card.addEventListener('click', () => {
-    const name = card.querySelector('.performer-name').textContent;
-    const bio = card.getAttribute('data-bio') || 'Bio not available.';
-    modalName.textContent = name;
-    modalBio.textContent = bio;
-    modal.style.display = 'flex';
-  });
-});
-
-modalClose.addEventListener('click', () => {
-  modal.style.display = 'none';
-});
-
-modal.addEventListener('click', (e) => {
-  if (e.target === modal) {
-    modal.style.display = 'none';
-  }
-});
-
       
       // Scroll progress indicator
       const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -882,7 +1363,7 @@ modal.addEventListener('click', (e) => {
       scrollProgress.style.width = scrolled + '%';
     });
 
-    // Smooth scrolling for navigation links, karto sei scarso
+    // === SMOOTH SCROLLING ===
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -895,18 +1376,75 @@ modal.addEventListener('click', (e) => {
         }
       });
     });
-  </script>
-  
-<!-- Modal container for performer bio -->
-<div id="bioModal" class="modal" style="display:none;">
-  <div class="modal-content">
-    <span id="modalClose" class="modal-close">&times;</span>
-    <h3 id="modalPerformerName"></h3>
-    <p id="modalPerformerBio"></p>
-  </div>
-</div>
 
-  
+    // === PERFORMER MODAL ===
+    const modal = document.getElementById('bioModal');
+    const modalName = document.getElementById('modalPerformerName');
+    const modalBio = document.getElementById('modalPerformerBio');
+    const modalClose = document.getElementById('modalClose');
+
+    document.querySelectorAll('.performer-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const name = card.querySelector('.performer-name').textContent;
+        const bio = card.getAttribute('data-bio') || 'Bio not available.';
+        modalName.textContent = name;
+        modalBio.textContent = bio;
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('show')) {
+        closeModal();
+      }
+    });
+
+    function closeModal() {
+      modal.classList.remove('show');
+      document.body.style.overflow = 'auto';
+    }
+
+    // === INTERSECTION OBSERVER FOR ANIMATIONS ===
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe elements for scroll animations
+    document.querySelectorAll('.stat-card, .performer-card, .support-list li').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      observer.observe(el);
+    });
+
+    // === PARALLAX EFFECT ===
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const parallax = document.querySelector('.hero');
+      if (parallax) {
+        const speed = scrolled * 0.5;
+        parallax.style.backgroundPositionY = speed + 'px';
+      }
+    });
+  </script>
 </body>
 </html>
-```
+      
