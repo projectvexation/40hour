@@ -16,6 +16,44 @@
       box-sizing: border-box;
     }
 
+    /* Modal styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 15, 15, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background: #1a1a1a;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 600px;
+  color: #fdd835;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  font-size: 2rem;
+  color: #fdd835;
+  cursor: pointer;
+  user-select: none;
+}
+
+.modal-close:hover {
+  color: #fff;
+}
+
+
     body {
       font-family: 'Inter', sans-serif;
       line-height: 1.6;
@@ -664,40 +702,40 @@
         <p class="section-subtitle">Ten dedicated pianists committed to this extraordinary musical journey</p>
       </div>
       
-      <div class="performers-grid">
-        <div class="performer-card">
-          <div class="performer-name">Francesco Pio Gennarelli</div>
-        </div>
-        <div class="performer-card">
-          <div class="performer-name">Matthew Lee Knowles</div>
-        </div>
-        <div class="performer-card">
-          <div class="performer-name">Jelena Makarova</div>
-        </div>
-        <div class="performer-card">
-          <div class="performer-name">Maya-Leigh Rosenwasser</div>
-        </div>
-        <div class="performer-card">
-          <div class="performer-name">Neil Georgeson</div>
-        </div>
-        <div class="performer-card">
-          <div class="performer-name">Aidan Chan</div>
-        </div>
-        <div class="performer-card">
-          <div class="performer-name">Edward Tait</div>
-        </div>
-        <div class="performer-card">
-          <div class="performer-name">Xuanxin Chen</div>
-        </div>
-        <div class="performer-card">
-          <div class="performer-name">Ben Smith</div>
-        </div>
-        <div class="performer-card">
-          <div class="performer-name">Thomas Ang</div>
-        </div>
+<div class="performers-grid">
+      <div class="performer-card" data-bio="Francesco Pio Gennarelli is a pianist specializing in contemporary and experimental music with a passion for endurance performances.">
+        <div class="performer-name">Francesco Pio Gennarelli</div>
+      </div>
+      <div class="performer-card" data-bio="Matthew Lee Knowles is renowned for his dynamic interpretations and innovative approach to classical piano repertoire.">
+        <div class="performer-name">Matthew Lee Knowles</div>
+      </div>
+      <div class="performer-card" data-bio="Jelena Makarova brings a rich experience in minimalist and avant-garde music, blending technique with deep emotion.">
+        <div class="performer-name">Jelena Makarova</div>
+      </div>
+      <div class="performer-card" data-bio="Maya-Leigh Rosenwasser explores musical textures with an emphasis on rhythm and hypnotic patterns.">
+        <div class="performer-name">Maya-Leigh Rosenwasser</div>
+      </div>
+      <div class="performer-card" data-bio="Neil Georgeson combines classical training with experimental soundscapes to create immersive performances.">
+        <div class="performer-name">Neil Georgeson</div>
+      </div>
+      <div class="performer-card" data-bio="Aidan Chan’s playing is noted for its clarity and emotional intensity in endurance events.">
+        <div class="performer-name">Aidan Chan</div>
+      </div>
+      <div class="performer-card" data-bio="Edward Tait has a passion for contemporary piano and is known for his precise, yet expressive, style.">
+        <div class="performer-name">Edward Tait</div>
+      </div>
+      <div class="performer-card" data-bio="Xuanxin Chen blends traditional techniques with modern performance art in her piano playing.">
+        <div class="performer-name">Xuanxin Chen</div>
+      </div>
+      <div class="performer-card" data-bio="Ben Smith focuses on minimalist compositions, bringing a meditative presence to his performances.">
+        <div class="performer-name">Ben Smith</div>
+      </div>
+      <div class="performer-card" data-bio="Thomas Ang’s innovative approach and dedication to contemporary music make his contributions unique and inspiring.">
+        <div class="performer-name">Thomas Ang</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <section id="support">
     <div class="container">
@@ -809,6 +847,33 @@
       } else {
         navbar.classList.remove('scrolled');
       }
+
+      const modal = document.getElementById('bioModal');
+const modalName = document.getElementById('modalPerformerName');
+const modalBio = document.getElementById('modalPerformerBio');
+const modalClose = document.getElementById('modalClose');
+
+document.querySelectorAll('.performer-card').forEach(card => {
+  card.style.cursor = 'pointer';
+  card.addEventListener('click', () => {
+    const name = card.querySelector('.performer-name').textContent;
+    const bio = card.getAttribute('data-bio') || 'Bio not available.';
+    modalName.textContent = name;
+    modalBio.textContent = bio;
+    modal.style.display = 'flex';
+  });
+});
+
+modalClose.addEventListener('click', () => {
+  modal.style.display = 'none';
+});
+
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    modal.style.display = 'none';
+  }
+});
+
       
       // Scroll progress indicator
       const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -831,6 +896,17 @@
       });
     });
   </script>
+  
+<!-- Modal container for performer bio -->
+<div id="bioModal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span id="modalClose" class="modal-close">&times;</span>
+    <h3 id="modalPerformerName"></h3>
+    <p id="modalPerformerBio"></p>
+  </div>
+</div>
+
+  
 </body>
 </html>
 ```
