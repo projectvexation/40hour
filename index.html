@@ -674,6 +674,129 @@
       color: var(--primary-gold);
     }
 
+    /* Timetable Section Styles */
+    .timetable-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .day-section {
+      margin-bottom: 4rem;
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      border: 1px solid var(--glass-border);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .day-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-gold), var(--secondary-gold));
+      border-radius: 20px 20px 0 0;
+    }
+
+    .day-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--primary-gold);
+      margin-bottom: 2rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .sessions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .session-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(253, 216, 53, 0.1);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .session-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary-gold), var(--secondary-gold));
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .session-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .session-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary-gold);
+      box-shadow: 0 15px 40px var(--accent-glow);
+    }
+
+    .session-card.midnight {
+      background: rgba(72, 61, 139, 0.1);
+      border-color: rgba(138, 43, 226, 0.3);
+    }
+
+    .session-card.final {
+      background: linear-gradient(135deg, rgba(253, 216, 53, 0.1), rgba(249, 194, 60, 0.05));
+      border: 2px solid var(--primary-gold);
+      position: relative;
+    }
+
+    .session-time {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary-gold);
+      margin-bottom: 0.8rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .session-pianist {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .session-repeats {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+
+    .final-badge {
+      position: absolute;
+      top: -1px;
+      right: -1px;
+      background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+      color: var(--dark-bg);
+      padding: 0.3rem 0.8rem;
+      border-radius: 0 12px 0 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
     /* Enhanced Support Section */
     .support-content {
       display: grid;
@@ -975,6 +1098,10 @@
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: auto;
       }
+
+      .sessions-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
     }
 
     @media (max-width: 768px) {
@@ -1030,6 +1157,14 @@
       section {
         padding: 3rem 0;
       }
+
+      .day-section {
+        padding: 2rem 1.5rem;
+      }
+
+      .sessions-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 480px) {
@@ -1054,6 +1189,18 @@
       .hero-info h3 {
         font-size: 1.4rem;
       }
+
+      .day-section {
+        padding: 1.5rem 1rem;
+      }
+
+      .session-card {
+        padding: 1.2rem;
+      }
+
+      .session-time {
+        font-size: 1.1rem;
+      }
     }
   </style>
 </head>
@@ -1069,6 +1216,7 @@
         <li><a href="#about">About</a></li>
         <li><a href="#charity">Help Musicians</a></li>
         <li><a href="#performers">Performers</a></li>
+        <li><a href="#timetable">Schedule</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -1233,7 +1381,7 @@
         <div class="performer-card" data-bio="is a pianist and composer specialising in contemporary and experimental music with a passion for endurance performances. winner of the NLF composition competition and Current world record holder for the longest 25-hour performance of John Cage's As Slow As Possible">
           <div class="performer-name">Francesco Pio Gennarelli</div>
         </div>
-        <div class="performer-card" data-bio="once spent four years writing a 26-hour piano piece and is currently a year into working on a piece for violin and piano that will last 10 hours after writing a 27 hour piece for organ.">
+        <div class="performer-card" data-bio="once spent four years writing a 26-hour piano piece and is currently a year into working on a piece for violin and piano that will last 10 hours after writing a 27 hour piece for organ.">
           <div class="performer-name">Matthew Lee Knowles</div>
         </div>
         <div class="performer-card" data-bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor">
@@ -1264,7 +1412,188 @@
     </div>
   </section>
 
-  
+  <section id="timetable">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Performance Schedule</h2>
+        <p class="section-subtitle">The complete 40-hour performance timetable - October 17th to 19th</p>
+      </div>
+      
+      <div class="timetable-container">
+        <!-- Day 1: October 17th -->
+        <div class="day-section">
+          <h3 class="day-title">Thursday, October 17th</h3>
+          <div class="sessions-grid">
+            <div class="session-card">
+              <div class="session-time">10:00 – 11:19</div>
+              <div class="session-pianist">Francesco Pio Gennarelli</div>
+              <div class="session-repeats">28 repetitions</div>
+            </div>
+            <div class="session-card">
+              <div class="session-time">11:19 – 12:39</div>
+              <div class="session-pianist">Matthew Lee Knowles</div>
+              <div class="session-repeats">28 repetitions</div>
+            </div>
+            <div class="session-card">
+              <div class="session-time">12:39 – 13:59</div>
+              <div class="session-pianist">Maya-Leigh</div>
+              <div class="session-repeats">28 repetitions</div>
+            </div>
+            <div class="session-card">
+              <div class="session-time">13:59 – 15:19</div>
+              <div class="session-pianist">Xuanxin Chen</div>
+              <div class="session-repeats">28 repetitions</div>
+            </div>
+            <div class="session-card">
+              <div class="session-time">15:19 – 16:39</div>
+              <div class="session-pianist">Ben Smith</div>
+              <div class="session-repeats">28 repetitions</div>
+            </div>
+            <div class="session-card">
+              <div class="session-time">16:39 – 17:58</div>
+              <div class="session-pianist">Aidan Chan</div>
+              <div class="session-repeats">28 repetitions</div>
+            </div>
+            <div class="session-card">
+              <div class="session-time">17:58 – 19:18</div>
+              <div class="session-pianist">Thomas Ang</div>
+              <div class="session-repeats">28 repetitions</div>
+            </div>
+            <div class="session-card">
+              <div class="session-time">19:18 – 20:38</div>
+              <div class="session-pianist">Jelena Makarova</div>
+              <div class="session-repeats">28 repetitions</div>
+            </div>
+            <div class="session-card">
+              <div class="session-time">20:38 – 21:58</div>
+              <div class="session-pianist">Edward Tait</div>
+              <div class="session-repeats">28 repetitions</div>
+            </div>
+            <div class="session-card">
+              <div class="session-time">21:58 – 23:18</div>
+              <div class="session-pianist">Neil Georgeson</div>
+              <div class="session-repeats">28 repetitions</div>
+            </div>
+            <div class="session-card midnight">
+              <div class="session-time">23:18 – 00:37</div>
+              <div class="session-pianist">Francesco Pio Gennarelli</div>
+              <div class="session-repeats">28 repetitions</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 2: October 18th -->
+        <div class="day-section">
+          <h3 class="day-title">Friday, October 18th</h3>
+          <div class="sessions-grid">
+            <div class="session-card midnight">
+              <div class="session-time">00:37 – 01:57</div>
+              <div class="session-pianist">Matthew Lee Knowles</div>
+              <div class="session-repeats">28 repetitions</div>
+            </div>
+            <div class="session-card midnight">
+              <div class="session-time">01:57 – 03:17</div>
+              <div class="session-pianist">Maya-Leigh</div>
+              <div class="session-repeats">28 repetitions</div>
+            </div>
+            <div class="session-card midnight">
+              <div class="session-time">03:17 – 04:37</div>
+              <div class="session-pianist">Xuanxin Chen</div>
+              <div class="session-repeats">28 repetitions</div>
+            </div>
+            <div class="session-card midnight">
+              <div class="session-time">04:37 – 05:57</div>
+              <div class="session-pianist">Ben Smith</div>
+              <div class="session-repeats">28 repetitions</div>
+            </div>
+            <div class="session-card midnight">
+              <div class="session-time">05:57 – 07:16</div>
+              <div class="session-pianist">Aidan Chan</div>
+              <div class="session-repeats">28 repetitions</div>
+            </div>
+            <div class="session-card">
+              <div class="session-time">07:16 – 08:36</div>
+              <div class="session-pianist">Thomas Ang</div>
+              <div class="session-repeats">28 repetitions</div>
+            </div>
+            <div class="session-card">
+              <div class="session-time">08:36 – 09:56</div>
+              <div class="session-pianist">Jelena Makarova</div>
+              <div class="session-repeats">28 repetitions</div>
+            </div>
+            <div class="session-card">
+              <div class="session-time">09:56 – 11:16</div>
+              <div class="session-pianist">Edward Tait</div>
+              <div class="session-repeats">28 repetitions</div>
+            </div>
+            <div class="session-card">
+              <div class="session-time">11:16 – 12:36</div>
+              <div class="session-pianist">Neil Georgeson</div>
+              <div class="session-repeats">28 repetitions</div>
+            </div>
+            <div class="session-card">
+              <div class="session-time">12:36 – 13:55</div>
+              <div class="session-pianist">Francesco Pio Gennarelli</div>
+              <div class="session-repeats">28 repetitions</div>
+            </div>
+            <div class="session-card">
+              <div class="session-time">13:55 – 15:15</div>
+              <div class="session-pianist">Maya-Leigh</div>
+              <div class="session-repeats">28 repetitions</div>
+            </div>
+            <div class="session-card">
+              <div class="session-time">15:15 – 16:35</div>
+              <div class="session-pianist">Edward Tait</div>
+              <div class="session-repeats">28 repetitions</div>
+            </div>
+            <div class="session-card">
+              <div class="session-time">16:35 – 17:55</div>
+              <div class="session-pianist">Xuanxin Chen</div>
+              <div class="session-repeats">28 repetitions</div>
+            </div>
+            <div class="session-card">
+              <div class="session-time">17:55 – 19:15</div>
+              <div class="session-pianist">Ben Smith</div>
+              <div class="session-repeats">28 repetitions</div>
+            </div>
+            <div class="session-card">
+              <div class="session-time">19:15 – 20:34</div>
+              <div class="session-pianist">Aidan Chan</div>
+              <div class="session-repeats">28 repetitions</div>
+            </div>
+            <div class="session-card">
+              <div class="session-time">20:34 – 21:54</div>
+              <div class="session-pianist">Thomas Ang</div>
+              <div class="session-repeats">28 repetitions</div>
+            </div>
+            <div class="session-card">
+              <div class="session-time">21:54 – 23:15</div>
+              <div class="session-pianist">Jelena Makarova</div>
+              <div class="session-repeats">28 repetitions</div>
+            </div>
+            <div class="session-card midnight">
+              <div class="session-time">23:15 – 00:36</div>
+              <div class="session-pianist">Matthew Lee Knowles</div>
+              <div class="session-repeats">28 repetitions</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 3: October 19th -->
+        <div class="day-section">
+          <h3 class="day-title">Saturday, October 19th</h3>
+          <div class="sessions-grid">
+            <div class="session-card midnight final">
+              <div class="session-time">00:36 – 02:00</div>
+              <div class="session-pianist">Neil Georgeson</div>
+              <div class="session-repeats">28 repetitions</div>
+              <div class="final-badge">Final Performance</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section id="contact">
     <div class="container">
@@ -1380,67 +1709,4 @@
     const modalBio = document.getElementById('modalPerformerBio');
     const modalClose = document.getElementById('modalClose');
 
-    document.querySelectorAll('.performer-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const name = card.querySelector('.performer-name').textContent;
-        const bio = card.getAttribute('data-bio') || 'Bio not available.';
-        modalName.textContent = name;
-        modalBio.textContent = bio;
-        modal.classList.add('show');
-        document.body.style.overflow = 'hidden';
-      });
-    });
-
-    modalClose.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        closeModal();
-      }
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.classList.contains('show')) {
-        closeModal();
-      }
-    });
-
-    function closeModal() {
-      modal.classList.remove('show');
-      document.body.style.overflow = 'auto';
-    }
-
-    // === INTERSECTION OBSERVER FOR ANIMATIONS ===
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, observerOptions);
-
-    // Observe elements for scroll animations
-    document.querySelectorAll('.stat-card, .performer-card, .support-list li').forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(30px)';
-      el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-      observer.observe(el);
-    });
-
-    // === PARALLAX EFFECT ===
-    window.addEventListener('scroll', () => {
-      const scrolled = window.pageYOffset;
-      const parallax = document.querySelector('.hero');
-      if (parallax) {
-        const speed = scrolled * 0.5;
-        parallax.style.backgroundPositionY = speed + 'px';
-      }
-    });
-  </script>
-</body>
-</html>
+    document.querySelector
