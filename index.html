@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>The 40-Hour Vexations</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The 40-Hour Vexations</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>
         * {
             margin: 0;
             padding: 0;
@@ -1030,418 +1031,301 @@
     </style>
 </head>
 <body>
-    <div class="scroll-indicator">
-        <div class="scroll-progress" id="scrollProgress"></div>
-    </div>
-    <nav id="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">Vexations</a>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#charity">Help Musicians</a></li>
-                <li><a href="#performers">Performers</a></li>
-                <li><a href="#timetable">Schedule</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-left">
-                <h1>The 40-Hour Vexations</h1>
-                <p class="hero-subtitle">
+<div class="scroll-indicator">
+<div class="scroll-progress" id="scrollProgress"></div>
+</div>
+<nav id="navbar">
+<div class="nav-container">
+<a class="logo" href="#">Vexations</a>
+<ul class="nav-links">
+<li><a href="#about">About</a></li>
+<li><a href="#charity">Help Musicians</a></li>
+<li><a href="#performers">Performers</a></li>
+<li><a href="#timetable">Schedule</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</div>
+</nav>
+<section class="hero">
+<div class="hero-content">
+<div class="hero-left">
+<h1>The 40-Hour Vexations</h1>
+<p class="hero-subtitle">
                     An Experimental Piano Concert of Endurance and Inspiration
                 </p>
-                <p class="hero-description">
+<p class="hero-description">
                     Nine pianists. Forty hours. One extraordinary musical journey through Erik Satie's hypnotic masterpiece.
                 </p>
-                <div class="hero-buttons">
-                    <a class="btn" href="https://www.gofundme.com/f/support-the-40-hour-vexations-performance" target="_blank">
+<div class="hero-buttons">
+<a class="btn" href="https://www.gofundme.com/f/support-the-40-hour-vexations-performance" target="_blank">
                         🎵 Donate to Help Musicians
                     </a>
-                    <a class="btn btn-secondary" href="https://www.youtube.com/@francescopio5864" target="_blank">
-                        🔴 Watch Live Stream
+<a class="btn btn-secondary" href="https://youtu.be/9Lb0o6jYvvE" target="_blank">
+    🎥 Watch Full Recording
                     </a>
-                </div>
-            </div>
-            <div class="hero-right">
-                <div class="hero-info">
-                    <h3>Event Details</h3>
-                    <p>
-                        Join us for a 40-hour piano marathon from <strong style='color: var(--primary-gold);'>October 17th at 10 am - 19th to 2 am</strong> at the historic St Pancras Clock Tower.
+</div>
+</div>
+<div class="hero-right">
+<div class="hero-info">
+<h3>Event Details</h3>
+<p>
+                        Join us for a 40-hour piano marathon from <strong style="color: var(--primary-gold);">October 17th at 10 am - 19th to 2 am</strong> at the historic St Pancras Clock Tower.
                     </p>
-                    <p>
+<p>
                         This performance is dedicated to supporting Help Musicians charity, which empowers music creators across the UK.
                     </p>
-                    <div style="text-align: center;">
-                        <a href="https://www.stpancrasclocktower.london/location" target="_blank" class="venue-link">
+<div style="text-align: center;">
+<a class="venue-link" href="https://www.stpancrasclocktower.london/location" target="_blank">
                             📍 Explore the Venue
                         </a>
-                    </div>
-                </div>
-                <div class="progress-section">
-                    <h4>Fundraising Progress</h4>
-                    <div id="progress-container" class="progress-container">
-                        <div class="progress-stats">
-                            <span class="progress-raised">£25 raised</span>
-                            <span class="progress-goal">Goal: £300 </span>
-                        </div>
-                        <div class="progress-bar-bg">
-                            <div id="progress-bar" class="progress-bar-fill"></div>
-                        </div>
-                        <p id="progress-text" class="progress-text">
+</div>
+</div>
+<div class="progress-section">
+<h4>Fundraising Progress</h4>
+<div class="progress-container" id="progress-container">
+<div class="progress-stats">
+<span class="progress-raised">£940 raised</span>
+<span class="progress-goal">Goal: £840</span>
+</div>
+<div class="progress-bar-bg">
+<div class="progress-bar-fill" id="progress-bar"></div>
+</div>
+<p class="progress-text" id="progress-text">
                             Help us reach our goal to make this performance possible
                         </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="about">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">What Is This?</h2>
-                <p class="section-subtitle">A groundbreaking interpretation of Erik Satie's legendary composition</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="about">
+<div class="container">
+<div class="section-header">
+<h2 class="section-title">What Is This?</h2>
+<p class="section-subtitle">A groundbreaking interpretation of Erik Satie's legendary composition</p>
+</div>
+<div class="about-content">
+<div class="about-text">
+<p>
                         Erik Satie's "Vexations" (1893) is one of the most provocative pieces in classical music history.
                         This brief, melancholic motif is meant to be repeated 840 times, creating a hypnotic performance
                         that challenges our concepts of time, endurance, and musical experience.
                     </p>
-                    <p>
+<p>
                         Our ambitious project brings together nine accomplished pianists for a continuous 40-hour performance.
                         This isn't just a concert, it's an exploration of human endurance, musical meditation, and the transformative power of repetition.
                     </p>
-                </div>
-                <div class="about-stats">
-                    <div class="stat-card">
-                        <span class="stat-number">40</span>
-                        <span class="stat-label">Hours of Music</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">840</span>
-                        <span class="stat-label">Repetitions</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">9</span>
-                        <span class="stat-label">Pianists</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">1</span>
-                        <span class="stat-label">Masterpiece</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="charity">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Supporting Help Musicians</h2>
-                <p class="section-subtitle">This fundraiser is in aid of Help Musicians charity</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
+</div>
+<div class="about-stats">
+<div class="stat-card">
+<span class="stat-number">40</span>
+<span class="stat-label">Hours of Music</span>
+</div>
+<div class="stat-card">
+<span class="stat-number">840</span>
+<span class="stat-label">Repetitions</span>
+</div>
+<div class="stat-card">
+<span class="stat-number">9</span>
+<span class="stat-label">Pianists</span>
+</div>
+<div class="stat-card">
+<span class="stat-number">1</span>
+<span class="stat-label">Masterpiece</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="charity">
+<div class="container">
+<div class="section-header">
+<h2 class="section-title">Supporting Help Musicians</h2>
+<p class="section-subtitle">This fundraiser is in aid of Help Musicians charity</p>
+</div>
+<div class="about-content">
+<div class="about-text">
+<p>
                         Help Musicians is a charity that is powered by music, which is why they empower and support those who create it and make it happen.
                     </p>
-                    <p>
+<p>
                         For over 100 years, Help Musicians has been working hard to make a meaningful difference to the lives of musicians across the UK. In a precarious profession often filled with ups and downs, opportunities are hard-won whilst challenges come along all too easily, with unsteady income and physical and mental health concerns common issues. Help Musicians offers a broad range of help to support music creators in times of crisis and opportunity - ensuring musicians across the UK can achieve their creative potential and sustain a career in music.
                     </p>
-                </div>
-                <div class="about-stats">
-                    <div class="stat-card">
-                        <span class="stat-number">100+</span>
-                        <span class="stat-label">Years of Support</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">UK</span>
-                        <span class="stat-label">Wide Coverage</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">♪</span>
-                        <span class="stat-label">Music Powered</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">∞</span>
-                        <span class="stat-label">Lives Changed</span>
-                    </div>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 3rem;">
-                <a class="btn" href="https://www.helpmusicians.org.uk/" target="_blank">
+</div>
+<div class="about-stats">
+<div class="stat-card">
+<span class="stat-number">100+</span>
+<span class="stat-label">Years of Support</span>
+</div>
+<div class="stat-card">
+<span class="stat-number">UK</span>
+<span class="stat-label">Wide Coverage</span>
+</div>
+<div class="stat-card">
+<span class="stat-number">♪</span>
+<span class="stat-label">Music Powered</span>
+</div>
+<div class="stat-card">
+<span class="stat-number">∞</span>
+<span class="stat-label">Lives Changed</span>
+</div>
+</div>
+</div>
+<div style="text-align: center; margin-top: 3rem;">
+<a class="btn" href="https://www.helpmusicians.org.uk/" target="_blank">
                     🎵 Learn More About Help Musicians
                 </a>
-                <a class="btn" href="https://www.gofundme.com/f/support-the-40-hour-vexations-performance" target="_blank">🎵 Donate to Help Musicians</a>
-            </div>
-        </div>
-    </section>
-    <section id="performers">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">The Performers</h2>
-                <p class="section-subtitle">Nine dedicated pianists committed to this extraordinary musical journey</p>
-            </div>
-            <div class="performers-grid">
-                <div class="performer-card" data-bio="is a pianist and composer specialising in contemporary and experimental music with a passion for endurance performances. winner of the NLF composition competition and Current world record holder for the longest 25-hour performance of John Cage's As Slow As Possible">
-                    <div class="performer-name">Francesco Pio Gennarelli</div>
-                </div>
-                <div class="performer-card" data-bio="once spent four years writing a 26-hour piano piece and is currently a year into working on a piece for violin and piano that will last 10 hours after writing a 27 hour piece for organ.">
-                    <div class="performer-name">Matthew Lee Knowles</div>
-                </div>
-                <div class="performer-card" data-bio="is a Lithuanian pianist and Royal Academy of Music Alumna based in London. She has performed at major venues including Carnegie Hall and London's Southbank Centre, and collaborated with the BBC Concert Orchestra, Belfast Ensemble, and Albert Hall Orchestra. Featured on BBC Radio 3, she is a passionate advocate for contemporary music and has premiered works by numerous living composers. Jelena is a co-founding member of Trio Sonorité and Living Songs.">
-                    <div class="performer-name">Jelena Makarova</div>
-                </div>
-                <div class="performer-card" data-bio="is a London-based pianist, writer and composer from the Shetland Islands. He has performed internationally at major venues and festivals, collaborated with leading composers, and is a member of Piano Circus. A prize-winning graduate and former Fellow of the Royal Academy of Music, he continues to champion new music worldwide.">
-                    <div class="performer-name">Neil Georgeson</div>
-                </div> 
-                <div class="performer-card" data-bio="is an Irish-Chinese pianist who has performed at Carnegie Hall, Wigmore Hall, and with leading orchestras including the National Symphony Orchestra of Ireland and RTÉ Concert Orchestra. Winner of the 2023 RDS Music Bursary, he is recognised for combining classical repertoire with contemporary commissions and improvisation. He is currently a PhD candidate at the Royal College of Music, researching diasporic identity in performance.">
-                    <div class="performer-name">Aidan Chan</div>
-                </div>
-                <div class="performer-card" data-bio="Composer, pianist and percussion, studying at the Royal Academy of Music. Pianist at the Heatherton Choir, and winner of the Berlioz International Music Prize.">
-                    <div class="performer-name">Edward Tait</div>
-                </div>
-                <div class="performer-card" data-bio="is a pianist from Guangdong, is a second-year Masters student at the Royal College of Music. A graduate of the Xinghai Conservatory, he combines classical repertoire with contemporary works and improvisation. His recent recital featured Bach, Chopin, Brahms, and Sakamoto, displaying both virtuosity and expressive range.">
-                    <div class="performer-name">Xuanxin Chen</div>
-                </div>
-                <div class="performer-card" data-bio="is a pianist and composer specialising in contemporary and experimental music. Described by Tempo as “one of the finest new-music pianists in London” and by The Guardian for his “extraordinary precision and insight,” he has premiered numerous works across major UK and European festivals with ensembles including Apartment House, Explore Ensemble, and the London Sinfonietta. He also conducts and records widely, and was a Junior Fellow at the Guildhall School of Music & Drama.">
-                    <div class="performer-name">Ben Smith</div>
-                </div>
-                <div class="performer-card" data-bio="is a pianist acclaimed for his imaginative programming and virtuosity. A specialist in Kapustin and Medtner—whose complete piano works he is recording—he is also committed to contemporary music and underrepresented composers. He works as a répétiteur at the Royal Ballet and is active as a teacher and coach.">
-                    <div class="performer-name">Thomas Ang</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="timetable">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Performance Schedule</h2>
-                <p class="section-subtitle">The complete 40-hour performance timetable - October 17th to 19th</p>
-            </div>
-            <div class="timetable-container">
-                <div class="day-section">
-                    <h3 class="day-title">Friday, October 17th</h3>
-                    <div class="sessions-grid">
-                        <div class="session-card">
-                            <div class="session-time">10:00 – 11:19</div>
-                            <div class="session-pianist">Francesco Pio Gennarelli</div>
-                            <div class="session-repeats">28 repetitions</div>
-                        </div>
-                        <div class="session-card">
-                            <div class="session-time">11:19 – 12:39</div>
-                            <div class="session-pianist">Matthew Lee Knowles</div>
-                            <div class="session-repeats">28 repetitions</div>
-                        </div>
-                        <div class="session-card">
-                            <div class="session-time">12:39 – 13:59</div>
-                            <div class="session-pianist">Neil Georgeson</div>
-                            <div class="session-repeats">28 repetitions</div>
-                        </div>
-                        <div class="session-card">
-                            <div class="session-time">13:59 – 15:19</div>
-                            <div class="session-pianist">Xuanxin Chen</div>
-                            <div class="session-repeats">28 repetitions</div>
-                        </div>
-                        <div class="session-card">
-                            <div class="session-time">15:19 – 16:39</div>
-                            <div class="session-pianist">Ben Smith</div>
-                            <div class="session-repeats">28 repetitions</div>
-                        </div>
-                        <div class="session-card">
-                            <div class="session-time">16:39 – 17:58</div>
-                            <div class="session-pianist">Aidan Chan</div>
-                            <div class="session-repeats">28 repetitions</div>
-                        </div>
-                        <div class="session-card">
-                            <div class="session-time">17:58 – 19:18</div>
-                            <div class="session-pianist">Thomas Ang</div>
-                            <div class="session-repeats">28 repetitions</div>
-                        </div>
-                        <div class="session-card">
-                            <div class="session-time">19:18 – 20:38</div>
-                            <div class="session-pianist">Jelena Makarova</div>
-                            <div class="session-repeats">28 repetitions</div>
-                        </div>
-                        <div class="session-card">
-                            <div class="session-time">20:38 – 21:58</div>
-                            <div class="session-pianist">Edward Tait</div>
-                            <div class="session-repeats">28 repetitions</div>
-                        </div>
-                        <div class="session-card">
-                            <div class="session-time">21:58 – 23:18</div>
-                            <div class="session-pianist">Neil Georgeson</div>
-                            <div class="session-repeats">28 repetitions</div>
-                        </div>
-                        <div class="session-card midnight">
-                            <div class="session-time">23:18 – 00:37</div>
-                            <div class="session-pianist">Francesco Pio Gennarelli</div>
-                            <div class="session-repeats">28 repetitions</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="day-section">
-                    <h3 class="day-title">Saturday, October 18th</h3>
-                    <div class="sessions-grid">
-                        <div class="session-card midnight">
-                            <div class="session-time">00:37 – 01:57</div>
-                            <div class="session-pianist">Matthew Lee Knowles</div>
-                            <div class="session-repeats">28 repetitions</div>
-                        </div>
-                        <div class="session-card midnight">
-                            <div class="session-time">01:57 – 03:17</div>
-                            <div class="session-pianist">Matthew Lee Knowles/Francesco Pio Gennarelli</div>
-                            <div class="session-repeats">28 repetitions</div>
-                        </div>
-                        <div class="session-card midnight">
-                            <div class="session-time">03:17 – 04:37</div>
-                            <div class="session-pianist">Xuanxin Chen</div>
-                            <div class="session-repeats">28 repetitions</div>
-                        </div>
-                        <div class="session-card midnight">
-                            <div class="session-time">04:37 – 05:57</div>
-                            <div class="session-pianist">Ben Smith</div>
-                            <div class="session-repeats">28 repetitions</div>
-                        </div>
-                        <div class="session-card midnight">
-                            <div class="session-time">05:57 – 07:16</div>
-                            <div class="session-pianist">Aidan Chan</div>
-                            <div class="session-repeats">28 repetitions</div>
-                        </div>
-                        <div class="session-card">
-                            <div class="session-time">07:16 – 08:36</div>
-                            <div class="session-pianist">Thomas Ang</div>
-                            <div class="session-repeats">28 repetitions</div>
-                        </div>
-                        <div class="session-card">
-                            <div class="session-time">08:36 – 09:56</div>
-                            <div class="session-pianist">Jelena Makarova</div>
-                            <div class="session-repeats">28 repetitions</div>
-                        </div>
-                        <div class="session-card">
-                            <div class="session-time">09:56 – 11:16</div>
-                            <div class="session-pianist">Edward Tait</div>
-                            <div class="session-repeats">28 repetitions</div>
-                        </div>
-                        <div class="session-card">
-                            <div class="session-time">11:16 – 12:36</div>
-                            <div class="session-pianist">Aidan Chan</div>
-                            <div class="session-repeats">28 repetitions</div>
-                        </div>
-                        <div class="session-card">
-                            <div class="session-time">12:36 – 13:55</div>
-                            <div class="session-pianist">Francesco Pio Gennarelli</div>
-                            <div class="session-repeats">28 repetitions</div>
-                        </div>
-                        <div class="session-card">
-                            <div class="session-time">13:55 – 15:15</div>
-                            <div class="session-pianist">Francesco Pio Gennarelli</div>
-                            <div class="session-repeats">28 repetitions</div>
-                        </div>
-                        <div class="session-card">
-                            <div class="session-time">15:15 – 16:35</div>
-                            <div class="session-pianist">Edward Tait</div>
-                            <div class="session-repeats">28 repetitions</div>
-                        </div>
-                        <div class="session-card">
-                            <div class="session-time">16:35 – 17:55</div>
-                            <div class="session-pianist">Xuanxin Chen</div>
-                            <div class="session-repeats">28 repetitions</div>
-                        </div>
-                        <div class="session-card">
-                            <div class="session-time">17:55 – 19:15</div>
-                            <div class="session-pianist">Ben Smith</div>
-                            <div class="session-repeats">28 repetitions</div>
-                        </div>
-                        <div class="session-card">
-                            <div class="session-time">19:15 – 20:34</div>
-                            <div class="session-pianist">Neil Georgeson</div>
-                            <div class="session-repeats">28 repetitions</div>
-                        </div>
-                        <div class="session-card">
-                            <div class="session-time">20:34 – 21:54</div>
-                            <div class="session-pianist">Thomas Ang</div>
-                            <div class="session-repeats">28 repetitions</div>
-                        </div>
-                        <div class="session-card">
-                            <div class="session-time">21:54 – 23:15</div>
-                            <div class="session-pianist">Jelena Makarova</div>
-                            <div class="session-repeats">28 repetitions</div>
-                        </div>
-                        <div class="session-card midnight">
-                            <div class="session-time">23:15 – 00:36</div>
-                            <div class="session-pianist">Matthew Lee Knowles</div>
-                            <div class="session-repeats">28 repetitions</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="day-section">
-                    <h3 class="day-title">Sunday, October 19th</h3>
-                    <div class="sessions-grid">
-                        <div class="session-card midnight final">
-                            <div class="session-time">00:36 – 02:00</div>
-                            <div class="session-pianist">Neil Georgeson</div>
-                            <div class="session-repeats">28 repetitions</div>
-                            <div class="final-badge">Final Performance</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Stay Connected</h2>
-                <p class="section-subtitle">Follow our journey and be part of this historic musical event</p>
-            </div>
-            <div class="contact-content">
-                <p>
+<a class="btn" href="https://www.gofundme.com/f/support-the-40-hour-vexations-performance" target="_blank">🎵 Donate to Help Musicians</a>
+</div>
+</div>
+</section>
+<section id="performers">
+<div class="container">
+<div class="section-header">
+<h2 class="section-title">The Performers</h2>
+<p class="section-subtitle">Nine dedicated pianists committed to this extraordinary musical journey</p>
+</div>
+<div class="performers-grid">
+<div class="performer-card" data-bio="is a pianist and composer specialising in contemporary and experimental music with a passion for endurance performances. winner of the NLF composition competition and Current world record holder for the longest 25-hour performance of John Cage's As Slow As Possible">
+<div class="performer-name">Francesco Pio Gennarelli</div>
+</div>
+<div class="performer-card" data-bio="once spent four years writing a 26-hour piano piece and is currently a year into working on a piece for violin and piano that will last 10 hours after writing a 27 hour piece for organ.">
+<div class="performer-name">Matthew Lee Knowles</div>
+</div>
+<div class="performer-card" data-bio="is a Lithuanian pianist and Royal Academy of Music Alumna based in London. She has performed at major venues including Carnegie Hall and London's Southbank Centre, and collaborated with the BBC Concert Orchestra, Belfast Ensemble, and Albert Hall Orchestra. Featured on BBC Radio 3, she is a passionate advocate for contemporary music and has premiered works by numerous living composers. Jelena is a co-founding member of Trio Sonorité and Living Songs.">
+<div class="performer-name">Jelena Makarova</div>
+</div>
+<div class="performer-card" data-bio="is a London-based pianist, writer and composer from the Shetland Islands. He has performed internationally at major venues and festivals, collaborated with leading composers, and is a member of Piano Circus. A prize-winning graduate and former Fellow of the Royal Academy of Music, he continues to champion new music worldwide.">
+<div class="performer-name">Neil Georgeson</div>
+</div>
+<div class="performer-card" data-bio="is an Irish-Chinese pianist who has performed at Carnegie Hall, Wigmore Hall, and with leading orchestras including the National Symphony Orchestra of Ireland and RTÉ Concert Orchestra. Winner of the 2023 RDS Music Bursary, he is recognised for combining classical repertoire with contemporary commissions and improvisation. He is currently a PhD candidate at the Royal College of Music, researching diasporic identity in performance.">
+<div class="performer-name">Aidan Chan</div>
+</div>
+<div class="performer-card" data-bio="Composer, pianist and percussion, studying at the Royal Academy of Music. Pianist at the Heatherton Choir, and winner of the Berlioz International Music Prize.">
+<div class="performer-name">Edward Tait</div>
+</div>
+<div class="performer-card" data-bio="is a pianist from Guangdong, is a second-year Masters student at the Royal College of Music. A graduate of the Xinghai Conservatory, he combines classical repertoire with contemporary works and improvisation. His recent recital featured Bach, Chopin, Brahms, and Sakamoto, displaying both virtuosity and expressive range.">
+<div class="performer-name">Xuanxin Chen</div>
+</div>
+<div class="performer-card" data-bio="is a pianist and composer specialising in contemporary and experimental music. Described by Tempo as “one of the finest new-music pianists in London” and by The Guardian for his “extraordinary precision and insight,” he has premiered numerous works across major UK and European festivals with ensembles including Apartment House, Explore Ensemble, and the London Sinfonietta. He also conducts and records widely, and was a Junior Fellow at the Guildhall School of Music &amp; Drama.">
+<div class="performer-name">Ben Smith</div>
+</div>
+<div class="performer-card" data-bio="is a pianist acclaimed for his imaginative programming and virtuosity. A specialist in Kapustin and Medtner—whose complete piano works he is recording—he is also committed to contemporary music and underrepresented composers. He works as a répétiteur at the Royal Ballet and is active as a teacher and coach.">
+<div class="performer-name">Thomas Ang</div>
+</div>
+</div>
+</div>
+</section>
+<section id="timetable">
+<div class="container">
+<div class="section-header">
+<h2 class="section-title">Performance Schedule</h2>
+<p class="section-subtitle">The complete 40-hour performance timetable - October 17th to 19th</p>
+</div>
+<div class="timetable-container">
+<div class="day-section">
+<h3 class="day-title">Friday, October 17th</h3>
+<div class="sessions-grid">
+<div class="session-card"><div class="session-time">10:00 – 11:19</div><div class="session-pianist">Francesco Pio Gennarelli</div><div class="session-repeats">28 repetitions</div></div>
+<div class="session-card"><div class="session-time">11:19 – 12:39</div><div class="session-pianist">Matthew Lee Knowles</div><div class="session-repeats">28 repetitions</div></div>
+<div class="session-card"><div class="session-time">12:39 – 13:59</div><div class="session-pianist">Neil Georgeson</div><div class="session-repeats">28 repetitions</div></div>
+<div class="session-card"><div class="session-time">13:59 – 15:19</div><div class="session-pianist">Xuanxin Chen</div><div class="session-repeats">28 repetitions</div></div>
+<div class="session-card"><div class="session-time">15:19 – 16:39</div><div class="session-pianist">Ben Smith</div><div class="session-repeats">28 repetitions</div></div>
+<div class="session-card"><div class="session-time">16:39 – 17:58</div><div class="session-pianist">Aidan Chan</div><div class="session-repeats">28 repetitions</div></div>
+<div class="session-card"><div class="session-time">17:58 – 19:18</div><div class="session-pianist">Thomas Ang</div><div class="session-repeats">28 repetitions</div></div>
+<div class="session-card"><div class="session-time">19:18 – 20:38</div><div class="session-pianist">Jelena Makarova</div><div class="session-repeats">28 repetitions</div></div>
+<div class="session-card"><div class="session-time">20:38 – 21:58</div><div class="session-pianist">Edward Tait</div><div class="session-repeats">28 repetitions</div></div>
+<div class="session-card"><div class="session-time">21:58 – 23:18</div><div class="session-pianist">Neil Georgeson</div><div class="session-repeats">28 repetitions</div></div>
+<div class="session-card midnight"><div class="session-time">23:18 – 00:37</div><div class="session-pianist">Francesco Pio Gennarelli</div><div class="session-repeats">28 repetitions</div></div>
+</div>
+</div>
+<div class="day-section">
+<h3 class="day-title">Saturday, October 18th</h3>
+<div class="sessions-grid">
+<div class="session-card midnight"><div class="session-time">00:37 – 01:57</div><div class="session-pianist">Matthew Lee Knowles</div><div class="session-repeats">28 repetitions</div></div>
+<div class="session-card midnight"><div class="session-time">01:57 – 03:17</div><div class="session-pianist">Matthew Lee Knowles</div><div class="session-repeats">28 repetitions</div></div>
+<div class="session-card midnight"><div class="session-time">03:17 – 04:37</div><div class="session-pianist">Francesco Pio Gennarelli/Ben Smith</div><div class="session-repeats">28 repetitions</div></div>
+<div class="session-card midnight"><div class="session-time">04:37 – 05:57</div><div class="session-pianist">Ben Smith</div><div class="session-repeats">28 repetitions</div></div>
+<div class="session-card midnight"><div class="session-time">05:57 – 07:16</div><div class="session-pianist">Aidan Chan</div><div class="session-repeats">28 repetitions</div></div>
+<div class="session-card"><div class="session-time">07:16 – 08:36</div><div class="session-pianist">Thomas Ang</div><div class="session-repeats">28 repetitions</div></div>
+<div class="session-card"><div class="session-time">08:36 – 09:56</div><div class="session-pianist">Jelena Makarova</div><div class="session-repeats">28 repetitions</div></div>
+<div class="session-card"><div class="session-time">09:56 – 11:16</div><div class="session-pianist">Edward Tait</div><div class="session-repeats">28 repetitions</div></div>
+<div class="session-card"><div class="session-time">11:16 – 12:36</div><div class="session-pianist">Aidan Chan</div><div class="session-repeats">28 repetitions</div></div>
+<div class="session-card"><div class="session-time">12:36 – 13:55</div><div class="session-pianist">Francesco Pio Gennarelli</div><div class="session-repeats">28 repetitions</div></div>
+<div class="session-card"><div class="session-time">13:55 – 15:15</div><div class="session-pianist">Aidan Chan</div><div class="session-repeats">28 repetitions</div></div>
+<div class="session-card"><div class="session-time">15:15 – 16:35</div><div class="session-pianist">Edward Tait</div><div class="session-repeats">28 repetitions</div></div>
+<div class="session-card"><div class="session-time">16:35 – 17:55</div><div class="session-pianist">Francesco Pio Gennarelli</div><div class="session-repeats">28 repetitions</div></div>
+<div class="session-card"><div class="session-time">17:55 – 19:15</div><div class="session-pianist">Ben Smith</div><div class="session-repeats">28 repetitions</div></div>
+<div class="session-card"><div class="session-time">19:15 – 20:34</div><div class="session-pianist">Neil Georgeson</div><div class="session-repeats">28 repetitions</div></div>
+<div class="session-card"><div class="session-time">21:54 – 23:15</div><div class="session-pianist">Jelena Makarova</div><div class="session-repeats">28 repetitions</div></div>
+<div class="session-card midnight"><div class="session-time">23:15 – 00:36</div><div class="session-pianist">Matthew Lee Knowles</div><div class="session-repeats">28 repetitions</div></div>
+</div>
+</div>
+<div class="day-section">
+<h3 class="day-title">Sunday, October 19th</h3>
+<div class="sessions-grid">
+<div class="session-card midnight final">
+<div class="session-time">00:36 – 02:00</div>
+<div class="session-pianist">Neil Georgeson</div>
+<div class="session-repeats">28 repetitions</div>
+<div class="final-badge">Final Performance</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="contact">
+<div class="container">
+<div class="section-header">
+<h2 class="section-title">Stay Connected</h2>
+<p class="section-subtitle">Follow our journey and be part of this historic musical event</p>
+</div>
+<div class="contact-content">
+<p>
                     Join our community of music lovers and supporters. Stay updated on rehearsals,
                     behind-the-scenes content, and the countdown to our 40-hour performance.
                 </p>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">📱</div>
-                        <div class="contact-label">Instagram</div>
-                        <div class="contact-value">
-                            <a href="https://instagram.com/pio_008" target="_blank">@pio_008</a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">✉</div>
-                        <div class="contact-label">Email</div>
-                        <div class="contact-value">
-                            <a href="mailto:vexationp@gmail.com">vexationp@gmail.com</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <p>
+<div class="contact-info">
+<div class="contact-item">
+<div class="contact-icon">📱</div>
+<div class="contact-label">Instagram</div>
+<div class="contact-value">
+<a href="https://instagram.com/pio_008" target="_blank">@pio_008</a>
+</div>
+</div>
+<div class="contact-item">
+<div class="contact-icon">✉</div>
+<div class="contact-label">Email</div>
+<div class="contact-value">
+<a href="mailto:vexationp@gmail.com">vexationp@gmail.com</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer>
+<div class="container">
+<div class="footer-content">
+<p>
                     Made with <span class="footer-heart">❤</span> by Francesco Pio Gennarelli
-                    <br>
-                    <small>&copy; 2025 The 40-Hour Vexations Project.</small>
-                </p>
-            </div>
-        </div>
-    </footer>
-    <div id="bioModal" class="modal">
-        <div class="modal-content">
-            <span id="modalClose" class="modal-close">&times;</span>
-            <h3 id="modalPerformerName" style="color: var(--primary-gold); margin-bottom: 1rem; font-family: 'Playfair Display', serif; font-size: 1.8rem;"></h3>
-            <p id="modalPerformerBio" style="line-height: 1.7; font-size: 1.1rem;"></p>
-        </div>
-    </div>
-    <script>
-        const raised = 25;
-        const goal = 300;
+                    <br/>
+<small>© 2025 The 40-Hour Vexations Project.</small>
+</p>
+</div>
+</div>
+</footer>
+<div class="modal" id="bioModal">
+<div class="modal-content">
+<span class="modal-close" id="modalClose">×</span>
+<h3 id="modalPerformerName" style="color: var(--primary-gold); margin-bottom: 1rem; font-family: 'Playfair Display', serif; font-size: 1.8rem;"></h3>
+<p id="modalPerformerBio" style="line-height: 1.7; font-size: 1.1rem;"></p>
+</div>
+</div>
+<script>
+        const raised = 940;
+        const goal = 840;
         const percent = Math.min((raised / goal) * 100, 100);
         const container = document.getElementById('progress-container');
         const bar = document.getElementById('progress-bar');
